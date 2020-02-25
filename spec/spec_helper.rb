@@ -100,49 +100,63 @@ RSpec.configure do |config|
 end
 
 def upload_file(one, two, three)
-  puts 'connecting to remote server...'
+  puts 'connecting to remote server using Net::SSH ...'
   sleep 2
   puts 'uploading file...'
   sleep 2
 end
 
 def download_file(one, two, three)
-  puts 'connecting to remote server...'
-  sleep 1
+  puts 'connecting to remote server using Net::SSH ...'
+  sleep 2
   puts 'downloading file...'
-  sleep 1
+  sleep 2
 end
 
 def run_workflow(env, wf)
-  puts 'connecting to remote server...'
-  sleep 1
+  puts 'connecting to remote server using Net::SSH ...'
+  sleep 2
   puts 'executing workflow: ' + wf
-  sleep 1
+  sleep 2
   puts 'workflow complete...'
 end
 
-def query_raw_table(env)
+def query_raw_table(env, isbn)
+  puts "Using ActiveRecord:"
+  puts "select * from raw_table where isbn = '" + isbn.to_s + "'" 
+  sleep 2
   strVar = File.open('sample_file.dat') {|f| f.readline}
   strVar
 end
 
 def query_dm_table(env)
+  puts "Using ActiveRecord:"
+  puts "select genre, count(*) from stage"
+  sleep 2
   [["Fantasy", 5],["Science Fiction", 3]]
 end
 
 def insert_row_into_stage(genre)
+  puts "Using ActiveRecord:"
   puts 'inserting ' + genre + ' row into stage table'
-  sleep 1
+  sleep 2
 end
 
 def insert_raw_ebook_record(env, isbn, pages, length)
-  puts "ebook record inserted"
+  puts "Using ActiveRecord:"
+  puts "ebook record inserted for isbn " + isbn.to_s + " with pages = " + pages.to_s + " and length = " + length.to_s
+  sleep 2
 end
 
 def insert_raw_audiobook_record(env, isbn, pages, length)
-  puts "audiobook record inserted"
+  puts "Using ActiveRecord:"
+  puts "audiobook record inserted for isbn " + isbn.to_s + " with pages = " + pages.to_s + " and length = " + length.to_s
+  sleep 2
 end
 
 def get_stage_length(env, isbn, format)
+  puts "Using ActiveRecord:"
+  puts "select length from stage where isbn = '" + isbn.to_s + "'"
+  sleep 2
   format.eql?("ebook") ? 500 : 1000
 end
