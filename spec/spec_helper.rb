@@ -108,20 +108,29 @@ end
 
 def download_file(one, two, three)
   puts 'connecting to remote server...'
-  sleep 2
+  sleep 1
   puts 'downloading file...'
-  sleep 2
+  sleep 1
 end
 
 def run_workflow(env, wf)
   puts 'connecting to remote server...'
-  sleep 2
+  sleep 1
   puts 'executing workflow: ' + wf
-  sleep 2
+  sleep 1
   puts 'workflow complete...'
 end
 
 def query_raw_table(env)
   strVar = File.open('sample_file.dat') {|f| f.readline}
   strVar
+end
+
+def query_dm_table(env)
+  [["Fantasy", 5],["Science Fiction", 3]]
+end
+
+def insert_row_into_stage(genre)
+  puts 'inserting ' + genre + ' row into stage table'
+  sleep 1
 end
