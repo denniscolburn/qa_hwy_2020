@@ -134,3 +134,15 @@ def insert_row_into_stage(genre)
   puts 'inserting ' + genre + ' row into stage table'
   sleep 1
 end
+
+def insert_raw_ebook_record(env, isbn, pages, length)
+  puts "ebook record inserted"
+end
+
+def insert_raw_audiobook_record(env, isbn, pages, length)
+  puts "audiobook record inserted"
+end
+
+def get_stage_length(env, isbn, format)
+  format.eql?("ebook") ? 500 : 1000
+end
